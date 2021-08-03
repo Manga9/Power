@@ -1,0 +1,47 @@
+@import "~src/assets/custom/_variables";
+.header {
+  background-color: $mainColor;
+  color: #fff;
+  padding: 15px 30px;
+  .top-header {
+    max-width: 1300px;
+    .brand {
+      display: flex;
+      img {
+        max-width: 80px;
+      }
+      .info {
+        margin-top: 8px;
+      }
+    }
+  }
+  h3 {
+    color: $fontColor;
+    margin: 0;
+  }
+  p {
+    font-size: 13px;
+  }
+  .search {
+    margin-top: 20px;
+    form {
+      display: flex;
+      justify-content: space-between;
+      input {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+      button {
+        margin-left: -1%;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        background-color: $fontColor;
+        border: 1 solid;
+        border-color: $fontColor;
+        svg {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

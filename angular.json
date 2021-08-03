@@ -32,9 +32,11 @@
             ],
             "styles": [
               "src/assets/custom/custom.scss",
-              "src/assets/custom/_variables.scss"
+              "src/assets/custom/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/all.min.js"
+            ]
           },
           "configurations": {
             "production": {
