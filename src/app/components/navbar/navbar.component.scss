@@ -1,0 +1,57 @@
+@import "~src/assets/custom/_variables";
+.bg-light {
+  background-color: #283848 !important;
+}
+
+.navbar {
+  .dropdown {
+    button {
+      background-color: transparent;
+      border: none;
+      img {
+        max-width: 50px;
+        background-color: var(--font-color);
+        padding: 10px;
+        border-radius: 50%;
+      }
+    }
+    span {
+      display: inline-block;
+      color: #fff;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+  .navbar-nav {
+    margin-left: 27%;
+    .nav-item {
+      a.nav-link {
+        color: #fff;
+        transition: .3s;
+        cursor: pointer;
+        &:hover {
+          color: fontColor
+        }
+      }
+      .nav-item.active {
+        a.nav-link {
+          color: fontColor;
+        }
+      }
+    }
+  }
+  .shopping-cart {
+    list-style: none;
+    margin: 0;
+    li {
+      a {
+        svg {
+          color: $fontColor;
+          font-size: 25px;
+          margin-right: 6px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
