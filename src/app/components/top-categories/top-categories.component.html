@@ -2,25 +2,13 @@
   <div class="container">
     <h4 class='title'>Top Categories</h4>
     <div class="row">
-      <div class="col col-lg-6">
+      <div class="col col-lg-6" *ngFor="let cat of topCats">
         <div class="category-box">
-          <img src="./assets/images/cat-box-1.jpg">
+          <img [src]="cat.Image">
           <div class="overlay">
             <div class="content">
-              <h4>Mobile & Tablets</h4>
-              <p>Great deals and offers on all mobile phones</p>
-              <button class="btn btn-warning">Shop Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-6">
-        <div class="category-box">
-          <img src="./assets/images/cat-box-2.jpg">
-          <div class="overlay">
-            <div class="content">
-              <h4>Gaming</h4>
-              <p>Fantatstic deals on video games & consoles</p>
+              <h4>{{cat.Name}}</h4>
+              <p>{{cat.Bio}}</p>
               <button class="btn btn-warning">Shop Now</button>
             </div>
           </div>

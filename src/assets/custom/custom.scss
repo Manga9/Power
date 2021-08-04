@@ -26,8 +26,14 @@ a {
     @media screen and (max-width: $medium) {
       margin: 10px 0;
     }
+    .card {
+      height: 350px;
+      border: 1px solid #eee;
+      box-shadow: 2px 4px 8px #eee;
+    }
     img {
-      max-width: 100px;
+      max-width: 180px;
+      height: 130px;
       display: block;
       margin: 20px auto;
     }
@@ -45,7 +51,7 @@ a {
         font-size: 17px;
       }
       .price {
-        margin: 5px 0 0;
+        margin: 5px 0 10px;
         color: #e41515;
         font-weight: 600;
       }

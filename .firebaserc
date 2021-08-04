@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "power-43380": {
+      "hosting": {
+        "Power": [
+          "power-43380"
+        ]
+      }
+    }
+  }
+}
