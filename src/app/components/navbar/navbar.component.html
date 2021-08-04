@@ -14,14 +14,6 @@
         <li><a class="dropdown-item" href="#">Logout</a></li>
       </div>
     </div>
-      <!-- <div class="dropdown">
-        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"> <span>Username</span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-        </ul>
-    </div>  -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
@@ -34,7 +26,7 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" *ngFor="let cat of allCats">{{cat.Name}}</a>
+          <a class="dropdown-item" *ngFor="let cat of allCats" [routerLink]="['/category', cat.Name]">{{cat.Name}}</a>
         </div>
       </li>
       <li class="nav-item">
