@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { TopCategoriesComponent } from './components/top-categories/top-categories.component';
+import { TopProductsComponent } from './components/top-products/top-products.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TopCategoriesComponent } from './components/top-categories/top-categori
     HeaderComponent,
     NavbarComponent,
     HomeComponent,
-    TopCategoriesComponent
+    TopCategoriesComponent,
+    TopProductsComponent
   ],
   imports: [
     BrowserModule,

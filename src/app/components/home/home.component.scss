@@ -4,20 +4,7 @@
   background: #2c3e50;
   background-image: url('/./assets/images/slider.jpg');
   background-size: cover;
-  height: 55vh;
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    left: -0%;
-    top: 100%;
-    z-index: 10;
-    display: block;
-    height: 25px;
-    background-size: 25px 100%;
-    background-position: 0 0;
-    background-image: linear-gradient(135deg, #2c3e50 25%, transparent 25%), linear-gradient(225deg, #2c3e50 25%, transparent 25%);
-  }
+  height: 70vh;
   .overlay {
     position: absolute;
     top: 0;

@@ -1,3 +1,5 @@
+@import "~src/assets/custom/_variables";
+
 * {
   padding: 0;
   margin: 0;
@@ -10,4 +12,46 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.products {
+  margin: 50px 0;
+  .title {
+    margin: 30px 0;
+    a {
+      font-size: 14px;
+    }
+  }
+  .product {
+    img {
+      max-width: 100px;
+      display: block;
+      margin: 20px auto;
+    }
+    .content {
+      padding: 15px;
+      margin-top: 20px;
+      .catgeory-name {
+        color: #a98787;
+        font-size: 14px;
+      }
+      .product-name {
+        color: #2d2424;
+        font-weight: 500;
+        margin: 0;
+        font-size: 17px;
+      }
+      .price {
+        margin: 5px 0 0;
+        color: #e41515;
+        font-weight: 600;
+      }
+      button {
+        background-color: $fontColor;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  }
 }
