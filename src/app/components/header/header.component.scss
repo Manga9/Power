@@ -7,6 +7,9 @@
     max-width: 1300px;
     .brand {
       display: flex;
+      @media screen and (max-width: $xs) {
+        justify-content: center;
+      }
       img {
         max-width: 80px;
       }
@@ -25,19 +28,22 @@
   .search {
     margin-top: 20px;
     form {
-      display: flex;
-      justify-content: space-between;
+      position: relative;
       input {
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
+        width: 100%;
       }
       button {
-        margin-left: -1%;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
+        border-radius: 0;
         background-color: $fontColor;
-        border: 1 solid;
         border-color: $fontColor;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @media screen and (max-width: $xs) {
+          bottom: -8px;
+        }
         svg {
           color: #fff;
         }

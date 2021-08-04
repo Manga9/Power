@@ -23,6 +23,9 @@ a {
     }
   }
   .product {
+    @media screen and (max-width: $medium) {
+      margin: 10px 0;
+    }
     img {
       max-width: 100px;
       display: block;

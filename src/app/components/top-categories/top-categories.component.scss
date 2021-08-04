@@ -9,8 +9,11 @@
     min-height: 25vh;
     position: relative;
     width: 100%;
+    @media screen and (max-width: $medium) {
+      margin: 10px 0;
+    }
     img {
-      max-width: 540px;
+      max-width: 460px;
     }
     .content {
       z-index: 0;
@@ -33,7 +36,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 460px;
     height: 100%;
     background-color: rgba(64, 52, 52, .5);
     z-index: 1;

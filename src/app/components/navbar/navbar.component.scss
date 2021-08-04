@@ -5,6 +5,9 @@
 
 .navbar {
   .dropdown {
+    @media screen and (max-width: $medium) {
+      margin-top: 10px;
+    }
     button {
       background-color: transparent;
       border: none;
@@ -24,6 +27,9 @@
   }
   .navbar-nav {
     margin-left: 27%;
+    @media screen and (max-width: $medium) {
+      margin: 10px;
+    }
     .nav-item {
       a.nav-link {
         color: #fff;
@@ -50,6 +56,9 @@
           font-size: 25px;
           margin-right: 6px;
           cursor: pointer;
+          @media screen and (max-width: $medium) {
+            margin-left: 10px;
+          }
         }
       }
     }

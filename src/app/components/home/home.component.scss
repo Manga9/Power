@@ -22,6 +22,12 @@
     color: #fff;
     h1 {
       font-size: 45px;
+      @media screen and (max-width: $sm) {
+        font-size: 32px;
+      }
+      @media screen and (max-width: $xs) {
+        font-size: 28px;
+      }
       margin: 0;
       span {
         color: $fontColor;
