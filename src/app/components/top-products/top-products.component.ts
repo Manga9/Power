@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
+import { CategoryService } from 'src/app/services/categories/category.service';
 
 @Component({
   selector: 'app-top-products',
@@ -11,8 +12,10 @@ export class TopProductsComponent implements OnInit, OnDestroy {
 
   topProducts: any = []
   getTopProducts?: Subscription
+  categories: any = []
 
-  constructor(private proServ:ProductService) { }
+  constructor(private proServ:ProductService, private catServ: CategoryService) {
+  }
 
   ngOnInit(): void {
     this.getTopProducts = this.proServ.getAllProducts().subscribe(result => {
@@ -21,6 +24,10 @@ export class TopProductsComponent implements OnInit, OnDestroy {
           this.topProducts.push(element)
         }
       });
+    })
+
+    this.catServ.getAllCategories().subscribe(result => {
+      this.categories = result
     })
   }
 

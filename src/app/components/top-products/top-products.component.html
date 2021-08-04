@@ -9,7 +9,9 @@
               <img [src]="pro.Image" alt="product image">
             </div>
             <div class="content">
-              <span class="catgeory-name">Mobile & Tablets</span>
+              <ng-container *ngFor="let cat of categories">
+                <span class="catgeory-name" *ngIf="pro.catID == cat.catID">{{cat.Name}}</span>
+              </ng-container>
               <h5 class="product-name">{{pro.Name}}</h5>
               <p class='price'>{{pro.Price}} EGP</p>
               <button class="btn btn-warning">Add To Cart</button>

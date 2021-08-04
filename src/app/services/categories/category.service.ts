@@ -11,4 +11,8 @@ export class CategoryService {
   getAllCategories() {
     return this.afStore.collection("catgeories").valueChanges();
   }
+
+  getCategory(id: string) {
+    return this.afStore.collection("catgeories").ref.doc(id).get()
+  }
 }
