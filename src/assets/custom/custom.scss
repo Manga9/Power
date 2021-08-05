@@ -125,12 +125,18 @@ a {
     padding: 20px 15px;
     margin: 20px 0;
     border-right: 1px solid #ccc;
+    @media screen and (max-width: $sm) {
+      border-bottom: 1px solid #ccc;
+    }
     .featured {
       li {
         margin-bottom: 10px;
       }
       .img {
         display: inline-block;
+        @media screen and (max-width: $lg) {
+          display: block;
+        }
       }
       img {
         max-width: 100px;
@@ -143,6 +149,9 @@ a {
         display: inline-block;
         vertical-align: middle;
         margin-left: 3px;
+        @media screen and (max-width: $lg) {
+          display: block;
+        }
         h6 {
           margin: 0;
           font-size: 14px;
@@ -181,8 +190,16 @@ a {
       background-color: #f5f0f0;
       padding: 10px 15px;
       border-radius: 5px;
+      @media screen and (max-width: $lg) {
+        display: block;
+        text-align: center;
+      }
       select {
         width: 20%;
+        @media screen and (max-width: $lg) {
+          width: 40%;
+          margin: 3px auto;
+        }
       }
      }
     }

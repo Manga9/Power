@@ -16,23 +16,26 @@ export class CategoryComponent implements OnInit, OnDestroy {
   getTopProducts?: Subscription
   topProducts: any = []
   allProducts: any = []
+  getCategoryName?: Subscription
   categoryName: any
-  catID: any
+  getCategoryID?: Subscription
+  categoryID: any
 
   constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
 
-    this.categoryName = this.route.snapshot.paramMap.get('name')
+    this.getCategoryName = this.route.paramMap.subscribe(param => {
+      this.categoryName = param.get('name')
+    })
+
+    this.getCategoryID = this.route.paramMap.subscribe(param => {
+      this.categoryID = param.get('id')
+    })
 
     this.getCategories = this.catServ.getAllCategories().subscribe(result => {
       this.allCategories = result
-      this.allCategories.forEach((element: { Name: string; catID: string; }) => {
-        if(this.categoryName == element.Name) {
-          this.catID = element.catID
-        }
-      });
     })
 
     this.getTopProducts = this.proServ.getAllProducts().subscribe(result => {
@@ -43,11 +46,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
         this.allProducts = result
       });
     })
-
   }
 
   ngOnDestroy(): void {
     this.getCategories?.unsubscribe()
+    this.getCategoryName?.unsubscribe()
+    this.getCategoryID?.unsubscribe()
+    this.getTopProducts?.unsubscribe()
   }
 
 }

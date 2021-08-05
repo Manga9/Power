@@ -9,7 +9,7 @@
             <div class="content">
               <h4>{{cat.Name}}</h4>
               <p>{{cat.Bio}}</p>
-              <a class="btn btn-warning" [routerLink]="['/category', cat.Name]">Shop Now</a>
+              <a class="btn btn-warning" [routerLink]="['/category', cat.Name, cat.catID]">Shop Now</a>
             </div>
           </div>
         </div>

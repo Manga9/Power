@@ -16,6 +16,7 @@ import { TopProductsComponent } from './components/top-products/top-products.com
 import { FooterComponent } from './components/footer/footer.component';
 import { environment } from 'src/environments/environment';
 import { CategoryComponent } from './components/category/category.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CategoryComponent } from './components/category/category.component';
     TopProductsComponent,
     FooterComponent,
     CategoryComponent,
+    ShopComponent,
   ],
   imports: [
     BrowserModule,
