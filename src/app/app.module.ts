@@ -26,7 +26,7 @@ import { CategoryComponent } from './components/category/category.component';
     TopCategoriesComponent,
     TopProductsComponent,
     FooterComponent,
-    CategoryComponent
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

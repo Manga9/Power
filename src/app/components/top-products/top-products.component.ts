@@ -13,6 +13,7 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   topProducts: any = []
   getTopProducts?: Subscription
   categories: any = []
+  getCategories?: Subscription
 
   constructor(private proServ:ProductService, private catServ: CategoryService) {
   }
@@ -26,13 +27,14 @@ export class TopProductsComponent implements OnInit, OnDestroy {
       });
     })
 
-    this.catServ.getAllCategories().subscribe(result => {
+    this.getCategories = this.catServ.getAllCategories().subscribe(result => {
       this.categories = result
     })
   }
 
   ngOnDestroy(): void {
     this.getTopProducts?.unsubscribe()
+    this.getCategories?.unsubscribe()
   }
 
 }

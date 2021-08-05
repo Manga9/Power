@@ -1,1 +1,67 @@
-<p>category works!</p>
+
+<div class="shop">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-3">
+            <div class="sidebar">
+                <div class="group product-categories">
+                    <h5>Product Categories</h5>
+                    <ul>
+                      <ng-container *ngFor="let cat of allCategories">
+                        <li><a [routerLink]="['/category', cat.Name]"><span class="cat">{{cat.Name}}</span><span class="cat-num">({{4}})</span></a></li>
+                      </ng-container>
+                    </ul>
+                </div>
+                <div class="featured-products">
+                    <h5>Featured Products</h5>
+                    <ul class="featured">
+                      <ng-container *ngFor="let pro of topProducts">
+                        <li>
+                          <div class="img">
+                          <img [src]="pro.Image" alt="product-img">
+                          </div>
+                          <div class="details">
+                          <h6>{{pro.Name}}</h6>
+                          <p>{{pro.Price}} EGP</p>
+                          </div>
+                        </li>
+                      </ng-container>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="all-products">
+                    <div class="result">
+                      <h5>{{categoryName}} Category</h5>
+                        <select class="form-control">
+                            <option value="1">Default Soritng</option>
+                            <option value="2">Ascending Soritng</option>
+                            <option value="3">Descinding Soritng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products">
+                    <div class="row">
+                        <ng-container *ngFor="let pro of allProducts">
+                            <div class="col-md-3" *ngIf="pro.catID == catID">
+                              <div class="product">
+                                <div class="card">
+                                  <div class="card-image">
+                                    <img [src]="pro.Image" alt="product image">
+                                  </div>
+                                  <div class="content">
+                                    <h5 class="product-name">{{pro.Name}}</h5>
+                                    <p class='price'>{{pro.Price}}</p>
+                                    <button class="btn btn-warning">Add To Cart</button>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
