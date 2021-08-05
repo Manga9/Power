@@ -11,4 +11,9 @@ export class ProductService {
   getAllProducts() {
     return this.afStore.collection("products").valueChanges()
   }
+
+  getProduct(id: string) {
+    return this.afStore.collection("products").doc(id).valueChanges()
+  }
+
 }

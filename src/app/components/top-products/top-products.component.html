@@ -5,9 +5,11 @@
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let pro of topProducts">
         <div class="product">
           <div class="card">
-            <div class="card-image">
-              <img [src]="pro.Image" alt="product image">
-            </div>
+            <a [routerLink]="['/product', pro.Name, pro.proID]">
+              <div class="card-image">
+                <img [src]="pro.Image" alt="product image">
+              </div>
+            </a>
             <div class="content">
               <ng-container *ngFor="let cat of categories">
                 <span class="catgeory-name" *ngIf="pro.catID == cat.catID">{{cat.Name}}</span>

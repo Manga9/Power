@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { environment } from 'src/environments/environment';
 import { CategoryComponent } from './components/category/category.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ShopComponent } from './components/shop/shop.component';
     FooterComponent,
     CategoryComponent,
     ShopComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

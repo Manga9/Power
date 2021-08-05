@@ -17,13 +17,15 @@
                     <ul class="featured">
                       <ng-container *ngFor="let pro of topProducts">
                         <li>
-                          <div class="img">
-                          <img [src]="pro.Image" alt="product-img">
-                          </div>
-                          <div class="details">
-                          <h6>{{pro.Name}}</h6>
-                          <p>{{pro.Price}} EGP</p>
-                          </div>
+                          <a [routerLink]="['/product', pro.Name, pro.proID]">
+                            <div class="img">
+                            <img [src]="pro.Image" alt="product-img">
+                            </div>
+                            <div class="details">
+                            <h6>{{pro.Name}}</h6>
+                            <p>{{pro.Price}} EGP</p>
+                            </div>
+                          </a>
                         </li>
                       </ng-container>
                         </ul>
@@ -47,9 +49,11 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                               <div class="product">
                                 <div class="card">
-                                  <div class="card-image">
-                                    <img [src]="pro.Image" alt="product image">
-                                  </div>
+                                  <a [routerLink]="['/product', pro.Name, pro.proID]">
+                                    <div class="card-image">
+                                      <img [src]="pro.Image" alt="product image">
+                                    </div>
+                                  </a>
                                   <div class="content">
                                     <ng-container *ngFor="let cat of allCategories">
                                       <span class="catgeory-name" *ngIf="pro.catID == cat.catID">{{cat.Name}}</span>

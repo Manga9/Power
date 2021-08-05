@@ -1,0 +1,53 @@
+<div class="product-details">
+  <div class="container">
+      <div class="details">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="product-image">
+                    <img [src]="product.Image" alt="product-image">
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6">
+                <div class="content">
+                    <h5>{{product.Name}}</h5>
+                    <ng-container *ngFor="let cat of allCategories">
+                      <span *ngIf="product.catID == cat.catID">{{cat.Name}}</span>
+                    </ng-container>
+                    <p class="desc">{{product.Bio}}</p>
+                    <p class="price">{{product.Price}} EGP</p>
+                    <button class="btn btn-warning">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="related-products products">
+        <h6>Related Products</h6>
+        <div class="container">
+          <div class="row">
+              <ng-container *ngFor="let pro of allProducts">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="product.catID == pro.catID && product.proID != pro.proID">
+                  <div class="product">
+                    <div class="card">
+                      <a [routerLink]="['/product', pro.Name, pro.proID]">
+                      <div class="card-image">
+                        <img [src]="pro.Image" alt="product image">
+                      </div>
+                      </a>
+                      <div class="content">
+                        <ng-container *ngFor="let cat of allCategories">
+                          <span *ngIf="product.catID == cat.catID">{{cat.Name}}</span>
+                        </ng-container>
+                        <h5 class="product-name">{{pro.Name}}</h5>
+                        <p class='price'>{{pro.Price}} EGP</p>
+                        <button class="btn btn-warning">Add To Cart</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              </ng-container>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</div>
