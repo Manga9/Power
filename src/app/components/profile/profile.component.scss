@@ -1,0 +1,21 @@
+.card {
+  margin: 40px 0;
+  border: 1px solid #ddd;
+  box-shadow: 2px 4px 8px #eee;
+  .card-body {
+    display: flex;
+  }
+  .info {
+    margin-left: 10px;
+    margin-top: 12px;
+    h5 {
+      margin: 0;
+    }
+  }
+  .controls {
+    padding: 1.25rem;
+    button {
+      margin: 5px;
+    }
+  }
+}

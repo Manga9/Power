@@ -8,10 +8,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="dropdown">
       <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"> <span>Username</span>
+              <img [src]="dataProfile.Image"> <span>{{dataProfile.Name}}</span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Logout</a></li>
+        <a class="dropdown-item" routerLink="/profile">My Profile</a>
+        <div class="dropdown-divider"></div>
+        <button class='btn btn-danger logout' (click)="logout()">Logout</button>
       </div>
     </div>
     <ul class="navbar-nav mr-auto">

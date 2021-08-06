@@ -8,15 +8,21 @@
     @media screen and (max-width: $medium) {
       margin-top: 10px;
     }
-    button {
+    .dropdown-toggle {
       background-color: transparent;
       border: none;
       img {
-        max-width: 50px;
+        max-width: 60px;
         background-color: var(--font-color);
         padding: 10px;
-        border-radius: 50%;
+        border-radius: 5px;
+        height: 60px;
       }
+    }
+    .logout {
+      width: 85%;
+      display: block;
+      margin: 5px auto;
     }
     span {
       display: inline-block;
