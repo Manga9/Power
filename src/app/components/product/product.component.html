@@ -35,7 +35,7 @@
                       </a>
                       <div class="content">
                         <ng-container *ngFor="let cat of allCategories">
-                          <span *ngIf="product.catID == cat.catID">{{cat.Name}}</span>
+                          <span class="catgeory-name" *ngIf="product.catID == cat.catID">{{cat.Name}}</span>
                         </ng-container>
                         <h5 class="product-name">{{pro.Name}}</h5>
                         <p class='price'>{{pro.Price}} EGP</p>

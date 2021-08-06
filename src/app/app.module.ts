@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +18,9 @@ import { environment } from 'src/environments/environment';
 import { CategoryComponent } from './components/category/category.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProductComponent } from './components/product/product.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,14 +34,17 @@ import { ProductComponent } from './components/product/product.component';
     CategoryComponent,
     ShopComponent,
     ProductComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    // AngularFireAuthModule,
+    AngularFireAuthModule,
     AngularFireStorageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

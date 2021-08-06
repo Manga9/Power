@@ -219,3 +219,32 @@ a {
    }
  /* End Shop */
 
+/* Start Login */
+
+.power-form {
+  img {
+    max-width: 100px;
+  }
+  form {
+    max-width: 500px;
+    margin: 10px auto 60px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 4px 8px #eee;
+    padding: 20px 0;
+    h2 {
+      font-size: 45px;
+      margin: 0 0 20px;
+    }
+    input {
+      max-width: 300px;
+      margin: 10px auto;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+    }
+  }
+}
+
+
+/* End Login */
