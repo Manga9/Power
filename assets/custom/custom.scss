@@ -38,6 +38,9 @@ a {
       @media screen and (max-width: $lg) {
         max-width: 460px;
       }
+      @media screen and (max-width: $xs) {
+        max-width: 370px;
+      }
     }
     .content {
       z-index: 0;
@@ -66,6 +69,9 @@ a {
     z-index: 1;
     @media screen and (max-width: $lg) {
       width: 460px;
+    }
+    @media screen and (max-width: $xs) {
+      width: 370px;
     }
   }
 }
