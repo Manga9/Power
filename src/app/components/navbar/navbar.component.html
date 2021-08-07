@@ -10,7 +10,7 @@
         <a routerLink="/login">Login</a> / 
         <a routerLink="/register">Signup</a>
     </div>
-    <div class="dropdown" *ngIf="isUser">
+    <div class="dropdown user" *ngIf="isUser">
       <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img [src]="dataProfile.Image"> <span>{{dataProfile.Name}}</span>
       </button>
