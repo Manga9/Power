@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,25 +10,35 @@ import { CategoryService } from 'src/app/services/categories/category.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
 
   allCats: any = []
   getCats?: Subscription
   userID: string = ''
   dataProfile: any = []
+  isUser: boolean = false
 
   constructor(private catServ: CategoryService, private afStore: AngularFirestore, private authServ: AuthService, private router:Router)
   {
-      this.userID = JSON.parse(localStorage.getItem("userID") as string)
+    this.authServ.user.subscribe(user => {
+      if(user) {
+        this.isUser = true
+        this.userID = JSON.parse(localStorage.getItem("userID") as string)
+      }else {
+        this.isUser = false
+      }
+    })
   }
 
   ngOnInit(): void {
     this.getCats = this.catServ.getAllCategories().subscribe(result => {
       this.allCats = result
     })
-    this.afStore.collection("users").ref.doc(this.userID).get().then((data) => {
-      this.dataProfile = data.data()
-    })
+    if (this.isUser == true) {
+      this.afStore.collection("users").ref.doc(this.userID).get().then((data) => {
+        this.dataProfile = data.data()
+      })
+    }
   }
 
   logout() {
@@ -38,11 +48,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }).catch(() => {
       console.log('error !')
     })
-  }
-
-
-  ngOnDestroy(): void {
-    this.getCats?.unsubscribe()
   }
 
 }

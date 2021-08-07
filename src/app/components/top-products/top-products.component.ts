@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-top-products',
@@ -15,14 +16,21 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   categories: any = []
   getCategories?: Subscription
   userID: string = ''
+  isUser:boolean = false
 
-  constructor(private proServ:ProductService, private catServ: CategoryService) {
+  constructor(private proServ:ProductService, private catServ: CategoryService, private authServ: AuthService) {
+    this.authServ.user.subscribe(user => {
+      if(user) {
+        this.isUser = true
+        this.userID = JSON.parse(localStorage.getItem("userID") as string)
+      }else {
+        this.isUser = false
+      }
+    })
   }
 
   ngOnInit(): void {
     
-    this.userID = JSON.parse(localStorage.getItem("userID") as string)
-
     this.getTopProducts = this.proServ.getAllProducts().subscribe(result => {
       result.map(element => {
         if(this.topProducts.length < 4) {

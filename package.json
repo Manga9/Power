@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~12.1.0",
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
+    "@ngx-loading-bar/core": "^5.1.2",
+    "@ngx-loading-bar/http-client": "^5.1.2",
     "firebase": "^8.8.1",
     "rxjs": "~6.6.0",
     "sass-loader": "^12.1.0",

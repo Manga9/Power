@@ -34,8 +34,8 @@
                         </ng-container>
                         <h5 class="product-name">{{pro.Name}}</h5>
                         <p class='price'>{{pro.Price}}</p>
-                        <button class="btn btn-primary">Update</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-primary" (click)="selectProduct(pro.proID)" data-toggle="modal" data-target="#updateProductModal">Update</button>
+                        <button class="btn btn-danger" (click)=deleteProduct(pro.proID)>Delete</button>
                       </div>
                     </div>
                   </div>
@@ -127,9 +127,68 @@
           </div>
           <div class="alert alert-danger" *ngIf="categoryId.errors?.required && categoryId.touched">category name Is Required</div>
 
-
           <div class="modal-footer">
             <button type="button" type="submit" class="btn btn-primary" [disabled]="f.invalid">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Update product Modal -->
+
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateProductModalLabel">Update {{product.Name}} Product</h5>
+        <button type="button" class="close" #closeUpButton data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #updateF="ngForm" (ngSubmit)="updateProduct(updateF)">
+          <input type="hidden" name="ID" #ID="ngModel" [(ngModel)]="product.proID">
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleInputName" name="Name" #Name="ngModel" [(ngModel)]="product.Name" required>
+          </div>
+          <div class="alert alert-danger" *ngIf="Name.errors?.required && Name.touched">Name Is Required</div>
+
+          <div class="mb-3">
+            <label for="exampleInputBio" class="form-label">Bio</label>
+            <input type="text" class="form-control" id="exampleInputBio" name="Bio" #Bio="ngModel" [(ngModel)]="product.Bio" required>
+          </div>
+          <div class="alert alert-danger" *ngIf="Bio.errors?.required && Bio.touched">Bio Is Required</div>
+
+          <div class="mb-3">
+            <label for="exampleInputPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="exampleInputPrice" name="Price" #Price="ngModel" [(ngModel)]="product.Price" required>
+          </div>
+          <div class="alert alert-danger" *ngIf="Price.errors?.required && Price.touched">Price Is Required</div>
+
+          <div class="mb-3">
+            <label for="exampleInputImage" class="form-label">Image</label>
+            <input class="form-control" type="file" accept=".jpg, .png" name="Image" (change)="uploadImage($event)" #Image="ngModel" ngModel > <br>
+            <div class="progress" *ngIf="percentage | async as pct">
+              <progress class="progress-bar" role="progressbar" [style.width.%]="pct" [value]="pct" aria-valuemin="0" aria-valuemax="100"><span>100%</span></progress>
+          </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="category">Categories</label>
+            <select class="form-select form-control" id="category" name="categoryId" #categoryId="ngModel" [(ngModel)]="product.catID" required>
+              <ng-container *ngFor="let category of allCategories">
+                <option [value]="category.catID">{{category.Name}}</option>
+              </ng-container>
+            </select>
+          </div>
+          <div class="alert alert-danger" *ngIf="categoryId.errors?.required && categoryId.touched">category name Is Required</div>
+          
+          <div class="modal-footer">
+            <button type="button" type="submit" class="btn btn-primary" [disabled]="updateF.invalid">Save</button>
           </div>
         </form>
       </div>

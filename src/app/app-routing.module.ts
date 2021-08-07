@@ -7,19 +7,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './components/category/category.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuardService } from './services/Guard/auth-guard.service';
+import { NoAuthGuardService } from './services/Guard/no-auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'category/:name/:id', component: CategoryComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'product/:name/:id', component: ProductComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: '', component: HomeComponent, canActivate:[NoAuthGuardService]},
+  {path: 'category/:name/:id', component: CategoryComponent, canActivate:[NoAuthGuardService]},
+  {path: 'shop', component: ShopComponent, canActivate:[NoAuthGuardService]},
+  {path: 'product/:name/:id', component: ProductComponent, canActivate:[NoAuthGuardService]},
+  {path: 'login', component: LoginComponent, canActivate:[NoAuthGuardService]},
+  {path: 'register', component: RegisterComponent, canActivate:[NoAuthGuardService]},
+  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

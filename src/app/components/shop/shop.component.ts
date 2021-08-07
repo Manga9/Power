@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
 import { ProductService } from 'src/app/services/products/product.service';
 
@@ -18,13 +19,20 @@ export class ShopComponent implements OnInit {
   topProducts: any = []
   allProducts: any = []
   userID: string = ''
+  isUser:boolean = false
 
-  constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute) {
+  constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute, private authServ:AuthService) {
+    this.authServ.user.subscribe(user => {
+      if(user) {
+        this.isUser = true
+        this.userID = JSON.parse(localStorage.getItem("userID") as string)
+      }else {
+        this.isUser = false
+      }
+    })
   }
 
   ngOnInit(): void {
-
-    this.userID = JSON.parse(localStorage.getItem("userID") as string)
 
     this.getCategories = this.catServ.getAllCategories().subscribe(result => {
       this.allCategories = result

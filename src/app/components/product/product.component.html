@@ -15,7 +15,7 @@
                     </ng-container>
                     <p class="desc">{{product.Bio}}</p>
                     <p class="price">{{product.Price}} EGP</p>
-                    <button class="btn btn-warning" *ngIf="product.userID != userID">Add To Cart</button>
+                    <button class="btn btn-warning" *ngIf="product.userID != userID && isUser">Add To Cart</button>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         </ng-container>
                         <h5 class="product-name">{{pro.Name}}</h5>
                         <p class='price'>{{pro.Price}} EGP</p>
-                        <button class="btn btn-warning" *ngIf="pro.userID != userID">Add To Cart</button>
+                        <button class="btn btn-warning" *ngIf="pro.userID != userID && isUser">Add To Cart</button>
                       </div>
                     </div>
                   </div>

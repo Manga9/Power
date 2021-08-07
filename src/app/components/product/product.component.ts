@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -18,19 +19,26 @@ export class ProductComponent implements OnInit, OnDestroy {
   getCategories?: Subscription
   allProducts: any = []
   getAllProducts?: Subscription
-  getProduct?: Subscription
   userID: string = ''
+  isUser:boolean = false
 
-  constructor(private proServ: ProductService, private route: ActivatedRoute, private catServ:CategoryService) { }
+  constructor(private proServ: ProductService, private route: ActivatedRoute, private catServ:CategoryService, private authServ: AuthService) {
+    this.authServ.user.subscribe(user => {
+      if(user) {
+        this.isUser = true
+        this.userID = JSON.parse(localStorage.getItem("userID") as string)
+      }else {
+        this.isUser = false
+      }
+    })
+  }
 
   ngOnInit(): void {
 
-    this.userID = JSON.parse(localStorage.getItem("userID") as string)
-
     this.getProID = this.route.paramMap.subscribe(result => {
       this.proID = result.get('id')
-      this.getProduct = this.proServ.getProduct(this.proID).subscribe(pro => {
-        this.product = pro
+      this.proServ.getProduct(this.proID).then(data => {
+        this.product = data.data()
       })
     })
 
@@ -50,7 +58,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.getProID?.unsubscribe()
     this.getCategories?.unsubscribe()
-    this.getProduct?.unsubscribe
     this.getAllProducts?.unsubscribe()
   }
 

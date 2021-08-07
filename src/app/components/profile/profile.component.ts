@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   ID: string = ''
   @ViewChild('closeButton') closeButton: any
   @ViewChild('closeProButton') closeProButton: any
+  @ViewChild('closeUpButton') closeUpButton: any
 
   task?: AngularFireUploadTask
   ref?: AngularFireStorageReference
@@ -42,6 +43,7 @@ export class ProfileComponent implements OnInit {
   imgUrl: string = ''
   successMsg: string = ''
   getProducts?: Subscription
+  product: any = []
 
   constructor(private authServ: AuthService, private afStore: AngularFirestore, private afStorage: AngularFireStorage, private proServ: ProductService, private catServ: CategoryService, private router:Router) {
 
@@ -92,6 +94,12 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  selectProduct(id:string) {
+    this.proServ.getProduct(id).then(data => {
+      this.product = data.data()
+    })
+  }
+
   uploadImage(event: any) {
     const id = Math.random().toString(36).substr(2, 9);
     this.ref = this.afStorage.ref(id + '_' + event.target.files[0].name)
@@ -128,6 +136,31 @@ export class ProfileComponent implements OnInit {
       })
     })
   })
+  }
+
+  updateProduct(updateData: NgForm) {
+    let data = updateData.value
+    console.log(data)
+    if (data.Image != "") {
+      this.afStore.collection("products").doc(data.ID).update({
+        Image: this.imgUrl
+      })
+    }
+    this.afStore.collection("products").doc(data.ID).update({
+      Name: data.Name,
+      Bio: data.Bio,
+      Price: data.Price,
+      catID: data.categoryId,
+    }).then(() => {
+      this.closeUpButton.nativeElement.click()
+      this.successMsg = "Product is Updated Successfully"
+    })
+  }
+
+  deleteProduct(id:string) {
+    this.proServ.deleteProduct(id).then(() => {
+      this.successMsg = "Product Deleted Successfully"
+    })
   }
 
   ngOnDestroy():void {
