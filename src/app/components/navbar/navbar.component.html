@@ -37,7 +37,7 @@
       </li>
     </ul>
     <ul class="shopping-cart" *ngIf="isUser">
-        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a routerLink="/cart"><i class="fas fa-shopping-cart"></i></a> <p>{{cart.length}}</p></li>
     </ul>
   </div>
 </nav>

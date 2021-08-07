@@ -1,0 +1,21 @@
+@import "~src/assets/custom/_variables";
+.cart {
+    min-height: 61.3vh;
+    h2 {
+        margin: 10px 0;
+    }
+    table {
+        margin: 10px auto;
+        max-width: 900px;
+        margin-bottom: 60px;
+        td, th {
+            @media screen and (max-width: $xs) {
+                font-size: 13px;        
+            }
+        }
+        button {
+            margin: 3px;
+        }
+    }
+   
+}

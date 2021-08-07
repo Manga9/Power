@@ -22,6 +22,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderDoneComponent } from './components/order-done/order-done.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    CartComponent,
+    OrderDoneComponent,
   ],
   imports: [
     BrowserModule,

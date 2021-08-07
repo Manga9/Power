@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
 import { ProductService } from 'src/app/services/products/product.service';
 
@@ -18,10 +19,11 @@ export class ShopComponent implements OnInit {
   getTopProducts?: Subscription
   topProducts: any = []
   allProducts: any = []
-  userID: string = ''
+  userID: string = '' 
   isUser:boolean = false
+  add:number = -1
 
-  constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute, private authServ:AuthService) {
+  constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute, private authServ:AuthService, private cartServ: CartService) {
     this.authServ.user.subscribe(user => {
       if(user) {
         this.isUser = true
@@ -48,6 +50,20 @@ export class ShopComponent implements OnInit {
         })
       });
     })
+  }
+
+  addToCart(index:number) {
+    this.add = +index
+  }
+
+  buy(amount:any) {
+    let selectedPro = this.allProducts[this.add];
+    let data = {
+      name: selectedPro.Name,
+      amount: amount,
+      price: selectedPro.Price
+    }
+    this.cartServ.addToCart(data).then(() => this.add = -1)
   }
 
   ngOnDestroy(): void {

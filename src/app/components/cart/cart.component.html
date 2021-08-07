@@ -1,0 +1,59 @@
+<div class="cart">
+<div class="container">
+    <h2 class="text-center">Cart Products</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Total</th>
+          <th scope="col">Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cart; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{c.name}}</td>
+          <td>{{c.price | currency:'EGP'}}</td>
+          <td><input class="form-control" type="number" placeholder="Amount" [(ngModel)]="c.amount"></td>
+          <td>{{(c.price * c.amount) | currency:' EGP '}}</td>
+          <td>
+            <button class="btn btn-success" (click)="save(i)">Save</button>
+            <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="text-center">Order Details</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Product</th>
+          <th scope="col">Total</th>
+          <th scope="col">Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{user.Name}}</td>
+          <td>{{user.Email}}</td>
+          <ng-container *ngFor="let c of cart; index as i">
+            <tr>
+            <td>{{c.name}}</td>
+            <td>{{(c.price * c.amount) | currency:' EGP '}}</td>
+            </tr>
+            </ng-container>
+            <td>{{ getTotal() | currency:' EGP ' }}</td>
+          <td>
+            <button class="btn btn-success" (click)="done()">Buy</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>  

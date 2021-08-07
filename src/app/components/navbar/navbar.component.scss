@@ -61,6 +61,7 @@
     list-style: none;
     margin: 0;
     li {
+      position: relative;
       a {
         svg {
           color: $fontColor;
@@ -71,6 +72,15 @@
             margin-left: 10px;
           }
         }
+      }
+      p {
+        position: absolute;
+        color: $fontColor;
+        top: -22px;
+        left: 9px;
+        text-align: center;
+        font-weight: 900;
+        font-size: 19px;
       }
     }
   }

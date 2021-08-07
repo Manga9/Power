@@ -9,15 +9,19 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuardService } from './services/Guard/auth-guard.service';
 import { NoAuthGuardService } from './services/Guard/no-auth-guard.service';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderDoneComponent } from './components/order-done/order-done.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, canActivate:[NoAuthGuardService]},
-  {path: 'category/:name/:id', component: CategoryComponent, canActivate:[NoAuthGuardService]},
-  {path: 'shop', component: ShopComponent, canActivate:[NoAuthGuardService]},
-  {path: 'product/:name/:id', component: ProductComponent, canActivate:[NoAuthGuardService]},
+  {path: '', component: HomeComponent},
+  {path: 'category/:name/:id', component: CategoryComponent},
+  {path: 'shop', component: ShopComponent},
+  {path: 'product/:name/:id', component: ProductComponent},
   {path: 'login', component: LoginComponent, canActivate:[NoAuthGuardService]},
   {path: 'register', component: RegisterComponent, canActivate:[NoAuthGuardService]},
-  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]}
+  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]},
+  {path: 'cart', component: CartComponent, canActivate:[AuthGuardService]},
+  {path: 'done', component: OrderDoneComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
