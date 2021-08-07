@@ -45,8 +45,8 @@
                 </div>
                 <div class="products">
                     <div class="row">
-                        <ng-container *ngFor="let pro of allProducts">
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngIf="pro.catID == categoryID">
+                        <ng-container *ngFor="let pro of allProducts; index as i">
+                          <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngIf="pro.catID == categoryID">
                               <div class="product">
                                 <div class="card">
                                   <a [routerLink]="['/product', pro.Name, pro.proID]">
@@ -57,7 +57,11 @@
                                   <div class="content">
                                     <h5 class="product-name">{{pro.Name}}</h5>
                                     <p class='price'>{{pro.Price}}</p>
-                                    <button class="btn btn-warning" *ngIf="pro.userID != userID && isUser">Add To Cart</button>
+                                    <button class="btn btn-warning" (click)="addToCart(i)" *ngIf="pro.userID != userID && isUser && add !== i">Add</button>
+                                    <div *ngIf="add === i">
+                                      <input type="number" placeholder="Amount" class="form-control" #amount>
+                                      <button class="btn btn-primary" (click)="buy(amount.value)">Add To Cart</button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>

@@ -15,7 +15,16 @@
                     </ng-container>
                     <p class="desc">{{product.Bio}}</p>
                     <p class="price">{{product.Price}} EGP</p>
-                    <button class="btn btn-warning" *ngIf="product.userID != userID && isUser">Add To Cart</button>
+                    <ng-container *ngFor="let pro of allProducts; index as i">
+                      <ng-container *ngIf="pro.proID == product.proID">
+                        <button class="btn btn-warning" (click)="addToCart(i)" *ngIf="pro.userID != userID && isUser && add !== i">Add</button>
+                        <div *ngIf="add === i">
+                          <input type="number" placeholder="Amount" class="form-control" #amount>
+                          <button class="btn btn-primary" (click)="buy(amount.value)">Add To Cart</button>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,7 +33,7 @@
         <h6>Related Products</h6>
         <div class="container">
           <div class="row">
-              <ng-container *ngFor="let pro of allProducts">
+              <ng-container *ngFor="let pro of allProducts; index as i">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="product.catID == pro.catID && product.proID != pro.proID">
                   <div class="product">
                     <div class="card">
@@ -39,7 +48,11 @@
                         </ng-container>
                         <h5 class="product-name">{{pro.Name}}</h5>
                         <p class='price'>{{pro.Price}} EGP</p>
-                        <button class="btn btn-warning" *ngIf="pro.userID != userID && isUser">Add To Cart</button>
+                        <button class="btn btn-warning" (click)="addToCart(i)" *ngIf="pro.userID != userID && isUser && add !== i">Add</button>
+                        <div *ngIf="add === i">
+                          <input type="number" placeholder="Amount" class="form-control" #amount>
+                          <button class="btn btn-primary" (click)="buy(amount.value)">Add To Cart</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -50,4 +63,3 @@
 
       </div>
   </div>
-</div>

@@ -4,6 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { CategoryService } from 'src/app/services/categories/category.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -21,8 +22,9 @@ export class ProductComponent implements OnInit, OnDestroy {
   getAllProducts?: Subscription
   userID: string = ''
   isUser:boolean = false
+  add: number = -1
 
-  constructor(private proServ: ProductService, private route: ActivatedRoute, private catServ:CategoryService, private authServ: AuthService) {
+  constructor(private proServ: ProductService, private route: ActivatedRoute, private catServ:CategoryService, private authServ: AuthService, private cartServ: CartService) {
     this.authServ.user.subscribe(user => {
       if(user) {
         this.isUser = true
@@ -53,6 +55,20 @@ export class ProductComponent implements OnInit, OnDestroy {
         return element.payload.doc.data()
       })
     })
+  }
+
+  addToCart(index:number) {
+    this.add = +index
+  }
+
+  buy(amount:any) {
+    let selectedPro = this.allProducts[this.add];
+    let data = {
+      name: selectedPro.Name,
+      amount: amount,
+      price: selectedPro.Price
+    }
+    this.cartServ.addToCart(data).then(() => this.add = -1)
   }
 
   ngOnDestroy(): void {
