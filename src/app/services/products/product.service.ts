@@ -9,7 +9,7 @@ export class ProductService {
   constructor(private afStore:AngularFirestore) { }
 
   getAllProducts() {
-    return this.afStore.collection("products").valueChanges()
+    return this.afStore.collection("products").snapshotChanges()
   }
 
   getProduct(id: string) {

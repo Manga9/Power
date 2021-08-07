@@ -19,10 +19,14 @@ export class ProductComponent implements OnInit, OnDestroy {
   allProducts: any = []
   getAllProducts?: Subscription
   getProduct?: Subscription
+  userID: string = ''
 
   constructor(private proServ: ProductService, private route: ActivatedRoute, private catServ:CategoryService) { }
 
   ngOnInit(): void {
+
+    this.userID = JSON.parse(localStorage.getItem("userID") as string)
+
     this.getProID = this.route.paramMap.subscribe(result => {
       this.proID = result.get('id')
       this.getProduct = this.proServ.getProduct(this.proID).subscribe(pro => {
@@ -37,7 +41,9 @@ export class ProductComponent implements OnInit, OnDestroy {
     })
 
     this.getAllProducts = this.proServ.getAllProducts().subscribe(result => {
-      this.allProducts = result
+      this.allProducts = result.map(element => {
+        return element.payload.doc.data()
+      })
     })
   }
 

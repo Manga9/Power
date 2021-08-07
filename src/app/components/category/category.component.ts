@@ -20,11 +20,14 @@ export class CategoryComponent implements OnInit, OnDestroy {
   categoryName: any
   getCategoryID?: Subscription
   categoryID: any
+  userID: string = ''
 
   constructor(private catServ: CategoryService, private proServ: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
+    this.userID = JSON.parse(localStorage.getItem("userID") as string)
 
     this.getCategoryName = this.route.paramMap.subscribe(param => {
       this.categoryName = param.get('name')
@@ -39,11 +42,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
     })
 
     this.getTopProducts = this.proServ.getAllProducts().subscribe(result => {
-      result.forEach(element => {
+      result.map(element => {
         if(this.topProducts.length < 4) {
-          this.topProducts.push(element)
+          this.topProducts.push(element.payload.doc.data())
         }
-        this.allProducts = result
+        this.allProducts = result.map(element => {
+          return element.payload.doc.data()
+        })
       });
     })
   }

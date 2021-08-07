@@ -14,17 +14,21 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   getTopProducts?: Subscription
   categories: any = []
   getCategories?: Subscription
+  userID: string = ''
 
   constructor(private proServ:ProductService, private catServ: CategoryService) {
   }
 
   ngOnInit(): void {
+    
+    this.userID = JSON.parse(localStorage.getItem("userID") as string)
+
     this.getTopProducts = this.proServ.getAllProducts().subscribe(result => {
-      result.forEach(element => {
+      result.map(element => {
         if(this.topProducts.length < 4) {
-          this.topProducts.push(element)
+          this.topProducts.push(element.payload.doc.data())
         }
-      });
+      })
     })
 
     this.getCategories = this.catServ.getAllCategories().subscribe(result => {
