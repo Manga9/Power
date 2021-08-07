@@ -14,7 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TopCategoriesComponent } from './components/top-categories/top-categories.component';
 import { TopProductsComponent } from './components/top-products/top-products.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { CategoryComponent } from './components/category/category.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProductComponent } from './components/product/product.component';
