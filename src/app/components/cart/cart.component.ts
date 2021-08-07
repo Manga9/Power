@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
 
   done() {
     this.router.navigate(['/done']);
-    this.successMsg = "We request your order and we will dliever it to you as soon as possible"
+    this.successMsg = "We recieved your request and we will dilever your order to you as soon as possible"
   }
 
 }

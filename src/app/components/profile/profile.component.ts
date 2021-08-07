@@ -109,6 +109,7 @@ export class ProfileComponent implements OnInit {
       data.ref.getDownloadURL().then((url) => {
         this.imgUrl = url
       })
+      this.percentage = new Observable<number | undefined>()
     })
   }
 
